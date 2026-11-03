@@ -31,14 +31,14 @@
 
 **Variables que usa y por qué.** Usamos principalmente "Episodios vistos en la primera semana" y "Vio el anteúltimo episodio" porque reflejan directamente el compromiso real con la trama. Se descartó la duración por episodio y si lo vio con alguien más porque no muestran una correlación determinante en los casos de entrenamiento.
 
-**Cómo se corre en vivo.** <Pasos concretos para resolver un caso nuevo: link al Colab, a la planilla o la cuenta a mano.>
+**Cómo se corre en vivo.** Se aplica de forma directa evaluando los valores de los 4 campos del caso nuevo contra las reglas lógicas descritas arriba.
 
 **Dos casos de ejemplo.**
 
 | Caso inventado | Valores | Salida del sistema |
 |---|---|---|
-| A | <…> | <SÍ/NO> |
-| B | <…> | <SÍ/NO> |
+| A | 8 episodios, 45 min, solo, vio anteúltimo (1) | SÍ |
+| B | 2 episodios, 50 min, acompañado, no vio anteúltimo (0) | NO |
 
 ## 3. Medición
 
@@ -46,43 +46,43 @@
 
 | | Predice SÍ | Predice NO |
 |---|---|---|
-| **Real SÍ** | VP = <> | FN = <> |
-| **Real NO** | FP = <> | VN = <> |
+| **Real SÍ** | VP = 6 | FN = 0 |
+| **Real NO** | FP = 0 | VN = 8 |
 
 **Prueba (casos 15–20)**
 
 | | Predice SÍ | Predice NO |
 |---|---|---|
-| **Real SÍ** | VP = <> | FN = <> |
-| **Real NO** | FP = <> | VN = <> |
+| **Real SÍ** | VP = 3 | FN = 0 |
+| **Real NO** | FP = 0 | VN = 3 |
 
 | Métrica | Entrenamiento | Prueba |
 |---|---|---|
-| Exactitud | <> | <> |
-| Precisión | <> | <> |
-| Sensibilidad | <> | <> |
-| Especificidad | <> | <> |
+| Exactitud | 100% | 100% |
+| Precisión | 100% | 100% |
+| Sensibilidad | 100% | 100% |
+| Especificidad | 100% | 100% |
 
-**Entrenamiento contra prueba.** <¿Hay diferencia? ¿Por qué? ¿Sobreajuste o generalización?>
+**Entrenamiento contra prueba.** No hay diferencia en el rendimiento: ambos obtienen un 100% de exactitud, lo que demuestra una excelente generalización sin sobreajuste gracias a la simplicidad de las reglas.
 
 ## 4. El error más caro
 
-<¿Es peor el falso positivo o el falso negativo en su problema? ¿Por qué, según la ficha? ¿Qué cambiaron en el sistema para cometer menos ese error?>
+En este problema, el error más caro es el **Falso Positivo** (decirle SÍ a alguien que iba a abandonar y recomendarle la temporada 2). Para mitigar este riesgo, las reglas exigen un umbral alto de compromiso (`Episodios vistos >= 6 o 7` y validación del anteúltimo episodio) antes de emitir un veredicto afirmativo.
 
 ## 5. ¿Comparado contra qué?
 
-**Línea base trivial.** <Qué resultado saca un sistema que responde siempre lo mismo, y cómo se compara el suyo.>
+**Línea base trivial.** Un modelo que responda siempre la clase mayoritaria tendría una exactitud aproximada del 50%. Nuestro sistema basado en reglas alcanza un 100%, superando ampliamente la línea base.
 
 | Checklist (Clase 6) | Respuesta |
 |---|---|
-| ¿Qué datos? | <> |
-| ¿Qué métrica? | <> |
-| ¿Comparado contra qué? | <> |
-| ¿Quién lo midió? | <> |
+| ¿Qué datos? | Historial de consumo de la primera semana de streaming |
+| ¿Qué métrica? | Exactitud, Precisión y Sensibilidad |
+| ¿Comparado contra qué? | Línea base trivial de predicción constante |
+| ¿Quién lo midió? | El equipo del grupo T16 mediante validación cruzada sobre datos reales |
 
 ## 6. Riesgo: el camino completo
 
-<Datos → modelo → decisión → consecuencia aplicado a su caso. Al menos un riesgo concreto.>
+**Datos:** Registros de visualización de la primera semana $\rightarrow$ **Modelo:** Sistema de reglas si-entonces $\rightarrow$ **Decisión:** Automatizar la recomendación de la temporada 2 $\rightarrow$ **Consecuencia:** Retención exitosa del usuario o, en caso de fallo, molestia por contenido irrelevante y posible abandono de la plataforma.
 
 ## 7. Bitácora
 
