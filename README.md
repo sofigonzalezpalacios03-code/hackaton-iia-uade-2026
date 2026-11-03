@@ -1,9 +1,9 @@
 # T16 · ¿Este usuario termina la serie?
 
 **Integrantes:** Sofía González Palacios · Franco Mari Sueiro
-**IA declarada:** Gemini / ChatGPT
+**IA declarada:** Gemini 
 **Pista:** Reglas
-**Publicación en LinkedIn:** https://www.linkedin.com/
+**Publicación en LinkedIn:** 
 
 ---
 
@@ -105,5 +105,6 @@ El error más caro es el **Falso Positivo** (recomendar la temporada 2 a quien a
 
 | Corrida | Nota | Agujero que encontró | Qué cambiamos |
 |---|---|---|---|
-| 1 | 5,5/10 | Uso de variable no disponible al decidir y matrices de entrenamiento desalineadas. | Eliminamos la variable del anteúltimo episodio y recalculamos las matrices reales de entrenamiento. |
+| 1 | 5,5/10 | Uso de variable no disponible al decidir y matrices de entrenamiento desalineadas. | Eliminamos la variable del anteúltimo episodio, corregimos las matrices de entrenamiento y detallamos la bitácora de IA. |
+| 2 | 8,5/10 | Contradicción en borrador de prueba (mención de VP=2 vs VP=3) y consultas sobre casos límite de 8 episodios. | Limpiamos el texto de prueba para dejar únicamente la matriz correcta y unificamos los sensores del PEAS. |
 
