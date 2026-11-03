@@ -107,16 +107,3 @@ El error más caro es el **Falso Positivo** (recomendar la temporada 2 a quien a
 |---|---|---|---|
 | 1 | 5,5/10 | Uso de variable no disponible al decidir y matrices de entrenamiento desalineadas. | Eliminamos la variable del anteúltimo episodio y recalculamos las matrices reales de entrenamiento. |
 
-## 7. Bitácora
-
-**Uso de la IA**
-
-| # | Qué le pedimos | Qué aceptamos | Qué rechazamos y por qué |
-|---|---|---|---|
-| 1 | <> | <> | <> |
-
-**Corridas contra el evaluador**
-
-| Corrida | Nota | Agujero que encontró | Qué cambiamos |
-|---|---|---|---|
-| 1 | <> | <> | <> |
