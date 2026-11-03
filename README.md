@@ -1,32 +1,35 @@
-# <codigo> · <¿Este usuario termina la serie?>
+# <T16> · <¿Este usuario termina la serie?>
 
 > **Hackatón IIA · UADE · 3.4.257.** Este README es la plantilla del grupo. En su fork, reemplacen todo lo que está entre `< >` y borren esta nota. Las bases están en `BASES.md` y su ficha en `problematicas/`.
 
 **Integrantes:** Sofía González Palacios · Franco Mari Sueiro
-**IA declarada:** <la del grupo desde la Clase 1>
-**Pista:** <Neurona / Reglas / Agente>
+**IA declarada:** Consumo de series y peliculas en platafromas de streaming
+**Pista:** Reglas 
 **Publicación en LinkedIn:** <link>
 
 ---
 
 ## 1. Formulación y PEAS
 
-**La pregunta.** <Para cada caso, ¿…? SÍ significa: …>
+**¿El usuario terminará la temporada de la serie?** SÍ = termina, NO = abandona
 
 | PEAS | Su sistema |
 |---|---|
-| Medida de rendimiento | <cómo se sabe si decidió bien> |
-| Entorno | <dónde y con qué decide> |
-| Actuadores | <qué hace con la decisión> |
-| Sensores | <qué datos recibe> |
+| Medida de rendimiento | Maximizar la precisión en la recomendación de la temporada 2, minimizando los errores costosos (falsos positivos y falsos negativos). |
+| Entorno | Usuarios de la plataforma de streaming analizados al finalizar su primera semana de visualización. |
+| Actuadores | Decisión del sistema de recomendar o no la temporada siguiente en la interfaz del usuario. |
+| Sensores | Datos de comportamiento de la primera semana: episodios vistos, duración por episodio, compañía de visualización y si vio el anteúltimo episodio. |
 
-**Objetivo y métrica.** <Qué es lo que de verdad importa en su problema y con qué métrica lo van a medir. ¿Son lo mismo?>
+**Objetivo y métrica.** Lo que de verdad importa es evitar recomendar la temporada siguiente a usuarios que van a abandonar (Falsos Positivos), ya que genera fricción comercial y frustración. La métrica clave es la **Precisión** junto con la **Sensibilidad**, evaluadas estrictamente sobre los datos de prueba.
 
 ## 2. El sistema
 
-**Cómo decide.** <Neurona: pesos y sesgo. Reglas: la lista de reglas si‑entonces. Agente: la regla con la que elige la acción.>
+**Cómo decide.** Sistema de reglas lógicas si-entonces:
+- **Regla 1:** Si `Vio el anteúltimo episodio == 1` Y `Episodios vistos >= 6`, entonces **SÍ**.
+- **Regla 2:** Si `Episodios vistos >= 7`, entonces **SÍ**.
+- **Regla 3:** En cualquier otro caso, responde **NO**.
 
-**Variables que usa y por qué.** <Cuáles usa, cuáles descarta y por qué.>
+**Variables que usa y por qué.** Usamos principalmente "Episodios vistos en la primera semana" y "Vio el anteúltimo episodio" porque reflejan directamente el compromiso real con la trama. Se descartó la duración por episodio y si lo vio con alguien más porque no muestran una correlación determinante en los casos de entrenamiento.
 
 **Cómo se corre en vivo.** <Pasos concretos para resolver un caso nuevo: link al Colab, a la planilla o la cuenta a mano.>
 
